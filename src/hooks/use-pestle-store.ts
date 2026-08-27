@@ -41,13 +41,12 @@ export function usePestleStore() {
   }, []);
 
   useEffect(() => {
-    if (store) {
-      const t = setTimeout(
-        () => localStorage.setItem(STORAGE_KEY, JSON.stringify(store)),
-        250,
-      );
-      return () => clearTimeout(t);
-    }
+    if (!store) return;
+    const t = setTimeout(
+      () => localStorage.setItem(STORAGE_KEY, JSON.stringify(store)),
+      250,
+    );
+    return () => clearTimeout(t);
   }, [store]);
 
   const mutateActive = useCallback((fn: (a: Analysis) => Analysis) => {
@@ -86,9 +85,10 @@ export function usePestleStore() {
           const fresh = createAnalysis();
           return { analyses: [fresh], activeId: fresh.id };
         }
+        const first = analyses[0];
         return {
           analyses,
-          activeId: s.activeId === id ? analyses[0].id : s.activeId,
+          activeId: s.activeId === id && first ? first.id : s.activeId,
         };
       }),
     duplicateAnalysis: (id: string) =>
@@ -149,7 +149,11 @@ export function usePestleStore() {
         const i = list.findIndex((f) => f.id === id);
         const j = i + dir;
         if (i < 0 || j < 0 || j >= list.length) return a;
-        [list[i], list[j]] = [list[j], list[i]];
+        const tmp = list[i];
+        const other = list[j];
+        if (!tmp || !other) return a;
+        list[i] = other;
+        list[j] = tmp;
         return { ...a, factors: { ...a.factors, [category]: list } };
       }),
   };

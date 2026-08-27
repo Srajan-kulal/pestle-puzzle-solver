@@ -59,12 +59,20 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-pestle-political: var(--pestle-political);
+  --color-pestle-economic: var(--pestle-economic);
+  --color-pestle-social: var(--pestle-social);
+  --color-pestle-technological: var(--pestle-technological);
+  --color-pestle-legal: var(--pestle-legal);
+  --color-pestle-environmental: var(--pestle-environmental);
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: oklch(0.978 0.008 95);
+  --foreground: oklch(0.22 0.03 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);

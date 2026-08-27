@@ -170,7 +170,7 @@ export function CategoryCard({
                 submit();
               }
             }}
-            placeholder={`Add a ${category.name.toLowerCase()} factor…`}
+            placeholder={`Add ${/^[aeiou]/i.test(category.name) ? "an" : "a"} ${category.name.toLowerCase()} factor…`}
             className="min-w-0 flex-1 rounded-md border border-input bg-background px-3 py-1.5 text-sm outline-none placeholder:text-muted-foreground focus:border-ring"
           />
           <button

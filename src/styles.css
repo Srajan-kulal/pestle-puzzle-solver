@@ -59,12 +59,20 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-pestle-political: var(--pestle-political);
+  --color-pestle-economic: var(--pestle-economic);
+  --color-pestle-social: var(--pestle-social);
+  --color-pestle-technological: var(--pestle-technological);
+  --color-pestle-legal: var(--pestle-legal);
+  --color-pestle-environmental: var(--pestle-environmental);
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
 }
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --background: oklch(0.978 0.008 95);
+  --foreground: oklch(0.22 0.03 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
   --popover: oklch(1 0 0);
@@ -95,6 +103,12 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+  --pestle-political: oklch(0.55 0.16 25);
+  --pestle-economic: oklch(0.58 0.12 160);
+  --pestle-social: oklch(0.56 0.14 300);
+  --pestle-technological: oklch(0.56 0.12 235);
+  --pestle-legal: oklch(0.62 0.12 60);
+  --pestle-environmental: oklch(0.58 0.12 130);
 }
 
 .dark {
@@ -130,6 +144,12 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+  --pestle-political: oklch(0.68 0.16 25);
+  --pestle-economic: oklch(0.72 0.13 160);
+  --pestle-social: oklch(0.7 0.14 300);
+  --pestle-technological: oklch(0.72 0.12 235);
+  --pestle-legal: oklch(0.76 0.12 70);
+  --pestle-environmental: oklch(0.72 0.13 130);
 }
 
 @layer base {
@@ -140,5 +160,76 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+}
+
+/* Print stylesheet for the PESTLE report */
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .pestle-screen {
+    display: none !important;
+  }
+
+  .pestle-report {
+    display: block !important;
+    color: #111;
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .pestle-report h1 {
+    font-size: 26px;
+    margin: 0 0 8px;
+  }
+
+  .pestle-report h2 {
+    font-size: 18px;
+    margin: 22px 0 6px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+  }
+
+  .pestle-report h3 {
+    font-size: 14px;
+    margin: 12px 0 4px;
+  }
+
+  .pestle-report p,
+  .pestle-report li {
+    font-size: 12.5px;
+    line-height: 1.55;
+  }
+
+  .pestle-report .lead {
+    font-size: 14px;
+  }
+
+  .pestle-report .meta {
+    color: #555;
+    font-size: 11.5px;
+  }
+
+  .pestle-report ul {
+    margin: 4px 0;
+    padding-left: 18px;
+  }
+
+  .pestle-report li {
+    margin-bottom: 4px;
+  }
+
+  .pestle-report .tag {
+    color: #555;
+    font-size: 11px;
+  }
+
+  .pestle-report .empty {
+    color: #888;
+    font-style: italic;
   }
 }
